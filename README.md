@@ -30,3 +30,4 @@ BiasedStack is an end-to-end deep learning project designed to analyze media fra
  ## Goal
 
 To build a scalable system that transforms unstructured news data into structured insights, enabling quantitative analysis of media bias and framing across sources.
+# Media-Bias
