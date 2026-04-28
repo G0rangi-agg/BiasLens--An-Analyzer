@@ -1,0 +1,209 @@
+event_id,canonical_target,clean_outlet,passage_mentions,dominant_sentiment,dominant_framing,%_Negative,%_Positive,%_Neutral
+EVT_00007,AIADMK,news18,4,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00007,Assam,news18,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00007,BD,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00007,BJP,news18,4,Neutral/Mixed,Attack/Defence,25.0,25.0,50.0
+EVT_00007,Congress,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00007,DMK,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00007,Edappadi K Palaniswami,news18,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00007,Mishra,news18,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00007,Sarma,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00007,dravidianlegacy,news18,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00007,edappadikpalaniswami,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00007,newwave,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00007,rajenthra,news18,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00007,sivakasi,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00007,thangamani,news18,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00007,velumani,news18,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00031,BJP,indian_express,3,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00031,BJP,ndtv,6,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00031,Chowdhury,indian_express,2,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00031,Congress,indian_express,4,Neutral/Mixed,Attack/Defence,0.0,25.0,75.0
+EVT_00031,EC,india_today,1,Negative,Governance,100.0,0.0,0.0
+EVT_00031,ED,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00031,I-PAC,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00031,Mamata Banerjee,ndtv,4,Negative,Attack/Defence,75.0,0.0,25.0
+EVT_00031,PM Modi,indian_express,1,Negative,Nationalism,100.0,0.0,0.0
+EVT_00031,Suvendu Adhikari,ndtv,3,Neutral/Mixed,Attack/Defence,0.0,33.3,66.7
+EVT_00031,Trinamool Congress,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00031,Trinamool Congress,indian_express,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00031,Trinamool Congress,ndtv,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00031,Trinamool Congress (TMC),indian_express,1,Neutral/Mixed,Communal Tension,0.0,0.0,100.0
+EVT_00031,WB,india_today,1,Negative,Governance,100.0,0.0,0.0
+EVT_00031,assembly,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00031,coal scam,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00033,Ahmed,theprint,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00033,BJP,theprint,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00033,Congress,theprint,4,Negative,Governance,75.0,0.0,25.0
+EVT_00033,Jagadish Shettar,theprint,1,Neutral/Mixed,Communal Tension,0.0,0.0,100.0
+EVT_00033,Naseer,theprint,1,Negative,Governance,100.0,0.0,0.0
+EVT_00033,Siddaramaiah,theprint,2,Negative,Governance,50.0,0.0,50.0
+EVT_00042,AIADMK,indian_express,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00042,Amit Shah,india_today,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00042,Amit Shah,indian_express,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00042,Andhra Pradesh,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,BJP,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00042,BJP,indian_express,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00042,Congress,indian_express,5,Neutral/Mixed,Attack/Defence,40.0,0.0,60.0
+EVT_00042,DMK,india_today,1,Negative,Governance,100.0,0.0,0.0
+EVT_00042,Gandhi,indian_express,1,Negative,Neutral/Factual,100.0,0.0,0.0
+EVT_00042,Karnataka,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,Kerala,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,PM Modi,indian_express,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,Palaniswami,indian_express,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,Parliament,india_today,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00042,Rahul Gandhi,indian_express,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00042,TVK,indian_express,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00042,Telangana,india_today,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00042,Vijay,indian_express,1,Neutral/Mixed,Neutral/Factual,0.0,0.0,100.0
+EVT_00043,BJP,news18,3,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00043,BJP,theprint,10,Negative,Governance,70.0,10.0,20.0
+EVT_00043,Bihar,theprint,1,Negative,Governance,100.0,0.0,0.0
+EVT_00043,BijendraYadav,theprint,2,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00043,Centre,theprint,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00043,Chaudhary,news18,1,Neutral/Mixed,Communal Tension,0.0,0.0,100.0
+EVT_00043,Chaudhary,theprint,3,Neutral/Mixed,Attack/Defence,33.3,33.3,33.3
+EVT_00043,JD(U),news18,1,Neutral/Mixed,Communal Tension,0.0,0.0,100.0
+EVT_00043,JD(U),theprint,4,Neutral/Mixed,Attack/Defence,25.0,0.0,75.0
+EVT_00043,NDP,theprint,1,Positive,Development,0.0,100.0,0.0
+EVT_00043,NishantKumar,theprint,3,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00043,Nitish Kumar,news18,3,Neutral/Mixed,Governance,33.3,0.0,66.7
+EVT_00043,Nitish Kumar,theprint,10,Neutral/Mixed,Governance,20.0,0.0,80.0
+EVT_00043,PM Modi,theprint,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00043,RJD,theprint,1,Negative,Victimhood,100.0,0.0,0.0
+EVT_00043,Samrat Choudhary,theprint,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00043,VijayChaudhary,theprint,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00043,Yadav,news18,2,Neutral/Mixed,Communal Tension,0.0,0.0,100.0
+EVT_00045,'O'Brien',theprint,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00045,AAP,theprint,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00045,BJP,theprint,3,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00045,Congress,theprint,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00045,DMK,theprint,3,Positive,Governance,0.0,66.7,33.3
+EVT_00045,JMM,theprint,1,Negative,Procedural Fairness,100.0,0.0,0.0
+EVT_00045,Left,theprint,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00045,Lok Sabha,the_new_indian_express,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00045,Lok Sabha,theprint,4,Neutral/Mixed,Procedural Fairness,25.0,0.0,75.0
+EVT_00045,MK Stalin,theprint,5,Negative,Attack/Defence,60.0,20.0,20.0
+EVT_00045,Meghwal,the_new_indian_express,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00045,NDA,theprint,1,Positive,Procedural Fairness,0.0,100.0,0.0
+EVT_00045,Nari Shakti Vadan Adhiyiyan,theprint,1,Negative,Governance,100.0,0.0,0.0
+EVT_00045,RJD,theprint,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00045,Revanth Reddy,theprint,1,Neutral/Mixed,Development,0.0,0.0,100.0
+EVT_00045,Samajwadi Party,theprint,3,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00045,Siddaramaiah,theprint,1,Neutral/Mixed,Development,0.0,0.0,100.0
+EVT_00045,Srinivasa Rao,the_hindu,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00045,TDP,the_hindu,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00045,TN,theprint,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00045,TVK,theprint,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00045,Trinamool Congress,theprint,3,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00045,Vijay,theprint,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00045,Vindhyas,theprint,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00045,Yadav,theprint,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00046,Congress,hindustan_times,2,Negative,Governance,50.0,0.0,50.0
+EVT_00046,Congress,news18,3,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00046,Jabbar,news18,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00046,Samsher Shamashankarappa,hindustan_times,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00060,Amit Shah,news18,2,Positive,Governance,0.0,50.0,50.0
+EVT_00060,BR,news18,1,Negative,Governance,100.0,0.0,0.0
+EVT_00060,Chidambaram,deccan_herald,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,Delimitation,news18,2,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00060,Delimitation bill,hindustan_times,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,Gandhi,hindustan_times,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,Govt,hindustan_times,1,Negative,Procedural Fairness,100.0,0.0,0.0
+EVT_00060,Heartland,news18,1,Neutral/Mixed,Parse Error,0.0,0.0,100.0
+EVT_00060,KA,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00060,Kharge,hindustan_times,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00060,Lok Sabha,hindustan_times,4,Negative,Attack/Defence,50.0,0.0,50.0
+EVT_00060,MK Stalin,hindustan_times,1,Positive,Nationalism,0.0,100.0,0.0
+EVT_00060,NDA,hindustan_times,3,Neutral/Mixed,Procedural Fairness,33.3,0.0,66.7
+EVT_00060,PM Modi,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,Rajeev Chandrakhundri,hindustan_times,1,Negative,Procedural Fairness,100.0,0.0,0.0
+EVT_00060,TN,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00060,Trinamool Congress,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,UP,news18,1,Negative,Governance,100.0,0.0,0.0
+EVT_00060,Yadav,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00060,delimitation bill,hindustan_times,1,Positive,Procedural Fairness,0.0,100.0,0.0
+EVT_00060,reservation for women,hindustan_times,1,Positive,Procedural Fairness,0.0,100.0,0.0
+EVT_00060,support,hindustan_times,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00062,S Jaishankar,the_times_of_india,1,Neutral/Mixed,Neutral/Factual,0.0,0.0,100.0
+EVT_00064,BJP,hindustan_times,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00064,BJP,indian_express,4,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,Congress,hindustan_times,3,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00064,DMK,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,Delimitation provisions in the bill,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,MK Stalin,hindustan_times,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00064,Mallikarjug Kharge,hindustan_times,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00064,Mamata Banerjee,indian_express,3,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00064,Samajwadi Party,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,Trinamool Congress,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,Venugopal,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00064,Women's reservation,hindustan_times,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00064,government,news18,1,Negative,Governance,100.0,0.0,0.0
+EVT_00065,Akhilesh,news18,2,Negative,Parse Error,50.0,0.0,50.0
+EVT_00065,Akhilesh Yadav,hindustan_times,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00065,AkhileshYadav,hindustan_times,1,Negative,Governance,100.0,0.0,0.0
+EVT_00065,BJP,india_today,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00065,Congress,india_today,3,Neutral/Mixed,Attack/Defence,33.3,0.0,66.7
+EVT_00065,Delimitation,news18,4,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00065,Delimitation Bill,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00065,PM Modi,hindustan_times,5,Neutral/Mixed,Governance,20.0,20.0,60.0
+EVT_00065,PM Modi,india_today,11,Neutral/Mixed,Attack/Defence,27.3,36.4,36.4
+EVT_00065,PM Modi,news18,7,Neutral/Mixed,Governance,28.6,28.6,42.9
+EVT_00065,Priya Gandhi Vadra,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00065,Samajwadi Party,hindustan_times,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00065,Women's quota law,news18,1,Positive,Governance,0.0,100.0,0.0
+EVT_00065,reservation bill,hindustan_times,2,Positive,Governance,0.0,100.0,0.0
+EVT_00065,women's reservation and delimitation bill,hindustan_times,2,Positive,Governance,0.0,50.0,50.0
+EVT_00067,Akhilesh Yadav,indian_express,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00067,Amit Shah,hindustan_times,1,Positive,Nationalism,0.0,100.0,0.0
+EVT_00067,Amit Shah,indian_express,6,Neutral/Mixed,Attack/Defence,16.7,0.0,83.3
+EVT_00067,Amit Shah,news18,2,Negative,Attack/Defence,50.0,50.0,0.0
+EVT_00067,Amit Shah,theprint,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00067,BJP,hindustan_times,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00067,BJP,india_today,2,Negative,Attack/Defence,50.0,50.0,0.0
+EVT_00067,BJP,news18,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00067,Congress,india_today,3,Negative,Attack/Defence,66.7,0.0,33.3
+EVT_00067,Gandhi,india_today,1,Positive,Governance,0.0,100.0,0.0
+EVT_00067,INDIA,news18,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00067,NDA,news18,2,Negative,Attack/Defence,50.0,0.0,50.0
+EVT_00067,PM Modi,india_today,1,Neutral/Mixed,Attack/Defence,0.0,0.0,100.0
+EVT_00067,Rahul Gandhi,theprint,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00067,Samajwadi Party,indian_express,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00073,Akhilesh Yadav,firstpost,1,Positive,Victimhood,0.0,100.0,0.0
+EVT_00073,Amit Shah,ndtv,3,Neutral/Mixed,Governance,33.3,33.3,33.3
+EVT_00073,Amit Shah,the_hindu,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00073,Amit Shah,the_new_indian_express,6,Negative,Communal Tension,50.0,0.0,50.0
+EVT_00073,Amit Shah,theprint,2,Negative,Communal Tension,50.0,50.0,0.0
+EVT_00073,BJP,the_new_indian_express,6,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00073,Baalu,the_new_indian_express,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00073,CPI,the_new_indian_express,1,Negative,Procedural Fairness,100.0,0.0,0.0
+EVT_00073,Congress,the_new_indian_express,6,Neutral/Mixed,Attack/Defence,33.3,16.7,50.0
+EVT_00073,Constitution131AmendmentBill2026,the_new_indian_express,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00073,DMK,the_new_indian_express,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00073,Delimitation Commission,theprint,1,Neutral/Mixed,Procedural Fairness,0.0,0.0,100.0
+EVT_00073,Gogoi,the_new_indian_express,2,Negative,Attack/Defence,50.0,50.0,0.0
+EVT_00073,Lok Sabha,ndtv,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00073,Lok Sabha,the_new_indian_express,8,Neutral/Mixed,Governance,25.0,0.0,75.0
+EVT_00073,Meghwal,the_new_indian_express,3,Neutral/Mixed,Governance,33.3,33.3,33.3
+EVT_00073,NDA,the_new_indian_express,5,Negative,Governance,100.0,0.0,0.0
+EVT_00073,PM Modi,the_hindu,1,Positive,Nationalism,0.0,100.0,0.0
+EVT_00073,PM Modi,the_new_indian_express,6,Negative,Attack/Defence,50.0,33.3,16.7
+EVT_00073,PTI,firstpost,1,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00073,SRINIVAS,the_new_indian_express,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00073,Samajwadi Party,the_new_indian_express,2,Negative,Communal Tension,50.0,50.0,0.0
+EVT_00073,Southern States,ndtv,1,Neutral/Mixed,Nationalism,0.0,0.0,100.0
+EVT_00073,Swaraj,the_new_indian_express,1,Negative,Nationalism,100.0,0.0,0.0
+EVT_00073,Telangana,theprint,1,Neutral/Mixed,Parse Error,0.0,0.0,100.0
+EVT_00073,Yadav,the_new_indian_express,1,Negative,Communal Tension,100.0,0.0,0.0
+EVT_00073,delimitation,the_new_indian_express,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00073,quota law,the_new_indian_express,2,Neutral/Mixed,Governance,0.0,0.0,100.0
+EVT_00087,1937,india_today,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00087,Shariat,india_today,2,Negative,Attack/Defence,50.0,0.0,50.0
+EVT_00110,AAP,india_today,2,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00110,BJP,hindustan_times,1,Negative,Attack/Defence,100.0,0.0,0.0
+EVT_00110,BJR,hindustan_times,1,Negative,Procedural Fairness,100.0,0.0,0.0
+EVT_00110,BRS,hindustan_times,1,Negative,Governance,100.0,0.0,0.0
+EVT_00110,KTSSR,hindustan_times,1,Negative,Victimhood,100.0,0.0,0.0
+EVT_00110,Malvinder Singh Kang,india_today,1,Positive,Attack/Defence,0.0,100.0,0.0
+EVT_00110,Reddy,hindustan_times,1,Positive,Procedural Fairness,0.0,100.0,0.0
+EVT_00110,YCP,hindustan_times,3,Neutral/Mixed,Procedural Fairness,0.0,33.3,66.7

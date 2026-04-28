@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiasLens — Indian Media Bias Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0f0e; --bg2: #141716; --bg3: #1c1f1d;
+  --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+  --text: #e8ebe9; --text2: #8a9189; --text3: #5a605c;
+  --accent: #a8f5a0; --accent2: #5ec459;
+  --neg: #f87171; --pos: #86efac; --neu: #94a3b8; --warn: #fbbf24;
+  --r: 8px; --r2: 12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+
+/* NAV */
+.nav{display:flex;align-items:center;gap:8px;padding:16px 28px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(13,15,14,0.93);backdrop-filter:blur(12px)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--accent);letter-spacing:-.5px}
+.nav-logo span{color:var(--text2)}
+.nav-tabs{display:flex;gap:2px;margin-left:32px}
+.tab{padding:6px 14px;border-radius:6px;cursor:pointer;color:var(--text2);font-size:13px;transition:all .15s;border:none;background:none;font-family:inherit}
+.tab:hover{color:var(--text);background:var(--bg3)}
+.tab.active{color:var(--accent);background:rgba(168,245,160,0.08);font-weight:500}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.badge{background:rgba(168,245,160,0.1);border:1px solid rgba(168,245,160,0.2);color:var(--accent);padding:3px 10px;border-radius:20px;font-size:12px;font-family:'DM Mono',monospace}
+.refresh-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text2);padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s}
+.refresh-btn:hover{color:var(--accent);border-color:var(--accent)}
+.refresh-btn.spinning{opacity:.5;pointer-events:none}
+
+/* LOADING OVERLAY */
+.loading-overlay{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .3s}
+.loading-overlay.hidden{opacity:0;pointer-events:none}
+.spinner{width:32px;height:32px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+.loading-text{color:var(--text2);font-size:13px;font-family:'DM Mono',monospace}
+.loading-files{color:var(--text3);font-size:12px;font-family:'DM Mono',monospace;text-align:center;max-width:320px;line-height:1.8}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ERROR BANNER */
+.error-banner{background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--neg);padding:12px 20px;margin:20px 28px;border-radius:var(--r);font-size:13px;display:none}
+.error-banner.show{display:block}
+
+/* STALENESS INDICATOR */
+.stale-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:6px 28px;display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.stale-item{display:flex;align-items:center;gap:4px}
+.stale-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2)}
+.stale-dot.old{background:var(--warn)}
+
+/* LAYOUT */
+.page{display:none;padding:28px}
+.page.active{display:block}
+.section-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-bottom:4px}
+.section-sub{color:var(--text2);font-size:13px;margin-bottom:24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.stat-big{font-family:'DM Serif Display',serif;font-size:36px;color:var(--text);line-height:1}
+.stat-sub{font-size:12px;color:var(--text2);margin-top:4px}
+
+/* BARS */
+.bar-wrap{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{width:148px;font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}
+.bar-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .5s ease}
+.bar-val{width:40px;text-align:right;font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;flex-shrink:0}
+
+/* STACKED BAR */
+.sbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sbar-label{width:130px;font-size:12px;color:var(--text2);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbar-track{flex:1;height:14px;border-radius:4px;overflow:hidden;display:flex}
+.sbar-neg{background:var(--neg);opacity:.8}
+.sbar-pos{background:var(--pos);opacity:.8}
+.sbar-neu{background:var(--neu);opacity:.5}
+.sbar-count{width:32px;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;flex-shrink:0;text-align:right}
+
+/* HEATMAP */
+.heatmap{overflow-x:auto;margin-top:4px}
+.heatmap table{border-collapse:collapse;min-width:500px;width:100%}
+.heatmap th{font-size:10px;color:var(--text3);font-weight:500;padding:4px 3px;text-align:center;writing-mode:vertical-lr;transform:rotate(180deg);white-space:nowrap;height:80px}
+.heatmap td{width:30px;height:28px;text-align:center;font-size:10px;font-family:'DM Mono',monospace;border:1px solid var(--bg);border-radius:2px;transition:transform .1s;cursor:default}
+.heatmap td:hover{transform:scale(1.2);z-index:2;position:relative;box-shadow:0 0 0 1px var(--accent)}
+.heatmap .row-label{font-size:11px;color:var(--text2);text-align:right;padding-right:10px;white-space:nowrap;writing-mode:horizontal-tb;transform:none;height:auto;width:130px;cursor:default}
+
+/* LEGEND */
+.legend{display:flex;gap:16px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+
+/* EVIDENCE CARDS */
+.evidence-list{display:flex;flex-direction:column;gap:10px;max-height:460px;overflow-y:auto;padding-right:4px}
+.ev-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;transition:border-color .15s}
+.ev-card:hover{border-color:var(--border2)}
+.ev-header{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.ev-outlet{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+.ev-event{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
+.ev-target{font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--text2)}
+.ev-sentiment{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
+.ev-sentiment.neg{background:rgba(248,113,113,0.15);color:var(--neg)}
+.ev-sentiment.pos{background:rgba(134,239,172,0.15);color:var(--pos)}
+.ev-sentiment.neu{background:rgba(148,163,184,0.1);color:var(--neu)}
+.ev-text{font-size:13px;color:var(--text);line-height:1.5;font-style:italic}
+.ev-triple{font-size:11px;color:var(--text3);margin-top:6px;font-family:'DM Mono',monospace}
+
+/* COMPARE */
+.compare-select{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap}
+select{background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:8px 12px;border-radius:var(--r);font-family:inherit;font-size:13px;cursor:pointer;min-width:160px}
+select:focus{outline:none;border-color:var(--accent)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.compare-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px}
+.compare-outlet-name{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:14px}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:13px;color:var(--text2)}
+.metric-val{font-family:'DM Mono',monospace;font-size:13px;color:var(--text)}
+
+/* TARGET */
+.target-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.target-pill{padding:6px 14px;border-radius:20px;border:1px solid var(--border2);color:var(--text2);cursor:pointer;font-size:13px;transition:all .15s;background:none;font-family:inherit}
+.target-pill:hover{border-color:var(--accent);color:var(--accent)}
+.target-pill.active{background:rgba(168,245,160,0.1);border-color:var(--accent);color:var(--accent);font-weight:500}
+.framing-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;background:rgba(251,191,36,0.1);color:var(--warn);margin-left:6px}
+
+/* MISC */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.note{font-size:12px;color:var(--text3);font-style:italic;margin-top:12px;padding:10px;background:var(--bg3);border-radius:var(--r);border-left:2px solid var(--border2)}
+.empty-state{text-align:center;color:var(--text3);padding:40px;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text">Loading data from pipeline files…</div>
+  <div class="loading-files" id="loading-files">Connecting to server…</div>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<nav class="nav">
+  <div class="nav-logo">Bias<span>Lens</span></div>
+  <div class="nav-tabs">
+    <button class="tab active" onclick="showPage('overview',this)">Overview</button>
+    <button class="tab" onclick="showPage('outlet',this)">Outlet Comparison</button>
+    <button class="tab" onclick="showPage('target',this)">Target Portrayal</button>
+    <button class="tab" onclick="showPage('events',this)">Event Deep Dive</button>
+    <button class="tab" onclick="showPage('evidence',this)">Evidence Explorer</button>
+  </div>
+  <div class="nav-right">
+    <span class="badge" id="nav-badge">Loading…</span>
+    <button class="refresh-btn" id="refresh-btn" onclick="loadAllData()">↻ Refresh data</button>
+  </div>
+</nav>
+
+<div class="stale-bar" id="stale-bar"></div>
+
+<!-- OVERVIEW -->
+<div class="page active" id="page-overview">
+  <div class="section-title">Coverage Overview</div>
+  <div class="section-sub" id="overview-sub">Loading…</div>
+  <div class="grid-4" style="margin-bottom:16px" id="stat-cards"></div>
+  <div class="grid-2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">Coverage share — shared major events (%)</div>
+      <div class="bar-wrap" id="coverage-bars"></div>
+      <div class="note">Coverage share = % of shared audited events covered per outlet. Measures <em>agenda behavior</em>, not editorial quality.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Shared events missed per outlet</div>
+      <div class="bar-wrap" id="miss-bars"></div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Avg. delay to publish (hours)</div>
+      <div class="bar-wrap" id="delay-bars"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Exclusive vs shared event split</div>
+      <div class="bar-wrap" id="excl-bars"></div>
+      <div class="note">High exclusive rate = most coverage is single-outlet; less directly comparable across outlets.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OUTLET COMPARISON -->
+<div class="page" id="page-outlet">
+  <div class="section-title">Outlet Comparison</div>
+  <div class="section-sub">Compare two outlets head-to-head on coverage behavior and shared event overlap.</div>
+  <div class="compare-select">
+    <label style="color:var(--text2);font-size:13px">Outlet A</label>
+    <select id="outletA" onchange="renderComparison()"></select>
+    <label style="color:var(--text2);font-size:13px">vs</label>
+    <select id="outletB" onchange="renderComparison()"></select>
+  </div>
+  <div class="compare-grid" id="compare-cards"></div>
+  <div class="card">
+    <div class="card-title">Shared event overlap matrix (events covered by both)</div>
+    <div class="heatmap" id="overlap-heatmap"></div>
+  </div>
+</div>
+
+<!-- TARGET PORTRAYAL -->
+<div class="page" id="page-target">
+  <div class="section-title">Target Portrayal</div>
+  <div class="section-sub">How each outlet frames key political targets — based on passage-level sentiment scoring. Portrayal in analyzed passages, not a final bias verdict.</div>
+  <div class="target-pills" id="target-pills"></div>
+  <div class="grid-2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">Sentiment distribution by outlet — <span id="target-label-sent" style="color:var(--accent);text-transform:none;letter-spacing:0;font-size:12px"></span></div>
+      <div id="sentiment-bars"></div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--neg)"></div>Negative</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--pos)"></div>Positive</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--neu)"></div>Neutral</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Dominant framing per outlet — <span id="target-label-frame" style="color:var(--accent);text-transform:none;letter-spacing:0;font-size:12px"></span></div>
+      <div id="framing-list"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Evidence passages for selected target</div>
+    <div class="evidence-list" id="target-evidence"></div>
+  </div>
+</div>
+
+<!-- EVENT DEEP DIVE -->
+<div class="page" id="page-events">
+  <div class="section-title">Event Deep Dive</div>
+  <div class="section-sub">Select a shared event to compare how each outlet covered it — targets mentioned, framing used, and what was omitted.</div>
+  <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
+    <label style="color:var(--text2);font-size:13px">Select event</label>
+    <select id="event-select" onchange="renderEvent()" style="min-width:200px"></select>
+    <span id="event-outlet-count" style="color:var(--text3);font-size:12px"></span>
+  </div>
+  <div class="grid-2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">Outlets covering this event</div>
+      <div id="event-outlets"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Target mentions per outlet</div>
+      <div id="event-targets"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-title">Target omission matrix — who mentioned what</div>
+    <div class="heatmap" id="event-omission"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Evidence passages for this event</div>
+    <div class="evidence-list" id="event-evidence"></div>
+  </div>
+</div>
+
+<!-- EVIDENCE EXPLORER -->
+<div class="page" id="page-evidence">
+  <div class="section-title">Evidence Explorer</div>
+  <div class="section-sub">Browse all passage-level evidence. Every claim is traceable to a specific article passage and its extracted triple.</div>
+  <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center">
+    <select id="ev-outlet-filter" onchange="filterEvidence()">
+      <option value="">All outlets</option>
+    </select>
+    <select id="ev-sentiment-filter" onchange="filterEvidence()">
+      <option value="">All sentiments</option>
+      <option value="Negative">Negative</option>
+      <option value="Positive">Positive</option>
+      <option value="Neutral">Neutral / Mixed</option>
+    </select>
+    <select id="ev-framing-filter" onchange="filterEvidence()">
+      <option value="">All framings</option>
+    </select>
+    <select id="ev-target-filter" onchange="filterEvidence()">
+      <option value="">All targets</option>
+    </select>
+    <span id="ev-count" style="color:var(--text3);font-size:12px;margin-left:auto"></span>
+  </div>
+  <div class="evidence-list" id="all-evidence" style="max-height:680px"></div>
+</div>
+
+<script>
+// =====================================================================
+// STATE — all data lives here after fetch
+// =====================================================================
+const API = 'http://localhost:5000/api';
+let DATA = {};          // raw API responses keyed by endpoint name
+let OUTLETS = [];       // sorted list of outlet keys
+let activeTarget = '';  // currently selected target in Target tab
+let OUTLET_LABELS = {}; // key -> display name
+
+const LABEL_MAP = {
+  deccan_herald:'Deccan Herald', firstpost:'Firstpost',
+  hindustan_times:'Hindustan Times', india_today:'India Today',
+  indian_express:'Indian Express', ndtv:'NDTV', news18:'News18',
+  the_hindu:'The Hindu', the_new_indian_express:'New Indian Express',
+  the_times_of_india:'Times of India', theprint:'The Print'
+};
+function label(o){ return OUTLET_LABELS[o] || LABEL_MAP[o] || o; }
+
+// =====================================================================
+// DATA LOADING
+// =====================================================================
+const ENDPOINTS = ['coverage','event_matrix','overlap','bias','omission','triples','passages'];
+
+async function fetchEndpoint(key){
+  const r = await fetch(`${API}/${key}`);
+  if(!r.ok) throw new Error(`${key}: ${r.status} ${r.statusText}`);
+  const j = await r.json();
+  if(j.error) throw new Error(`${key}: ${j.error}`);
+  return j;
+}
+
+async function loadAllData(){
+  showLoading(true);
+  showError(null);
+  document.getElementById('refresh-btn').classList.add('spinning');
+
+  try {
+    // Fetch meta first for stale indicator
+    const metaRes = await fetch(`${API}/meta`).catch(()=>null);
+    const meta = metaRes ? await metaRes.json() : null;
+
+    // Update loading file list
+    document.getElementById('loading-files').textContent =
+      ENDPOINTS.map(k=>`• ${k}`).join('  ');
+
+    // Parallel fetch all endpoints
+    const results = await Promise.all(ENDPOINTS.map(k=>fetchEndpoint(k)));
+    ENDPOINTS.forEach((k,i)=>{ DATA[k] = results[i].data; });
+
+    // Derive outlets from coverage data
+    OUTLETS = (DATA.coverage||[]).map(r=>r.Outlet||r.outlet||Object.values(r)[0]).filter(Boolean);
+    OUTLETS.forEach(o=>{ OUTLET_LABELS[o] = LABEL_MAP[o]||o; });
+
+    // Render stale bar
+    if(meta) renderStaleness(meta);
+
+    // Update nav badge
+    const totalEvents = (DATA.event_matrix||[]).length;
+    const totalPassages = (DATA.passages||[]).length;
+    document.getElementById('nav-badge').textContent =
+      `${OUTLETS.length} outlets · ${totalEvents} events · ${totalPassages.toLocaleString()} passages`;
+
+    // Initialize all views
+    renderOverview();
+    initOutletSelects();
+    renderComparison();
+    initTargets();
+    initEventSelect();
+    initEvidenceFilters();
+
+    showLoading(false);
+  } catch(e) {
+    showError(`Could not load data: ${e.message}. Is the server running? Try: python server.py`);
+    showLoading(false);
+  }
+  document.getElementById('refresh-btn').classList.remove('spinning');
+}
+
+function renderStaleness(meta){
+  const now = Date.now()/1000;
+  const html = Object.entries(meta).map(([k,v])=>{
+    if(!v.exists && v.exists!==undefined) return `<span class="stale-item"><span class="stale-dot" style="background:var(--neg)"></span>${k}: missing</span>`;
+    const ageH = v.last_modified ? Math.round((now-v.last_modified)/3600) : null;
+    const old = ageH!==null && ageH>24;
+    return `<span class="stale-item"><span class="stale-dot${old?' old':''}"></span>${k}: ${v.rows} rows${ageH!==null?` · ${ageH}h ago`:''}</span>`;
+  }).join('');
+  document.getElementById('stale-bar').innerHTML = `<span style="color:var(--text3);margin-right:4px">Data freshness:</span>` + html;
+}
+
+function showLoading(on){
+  document.getElementById('loading').classList.toggle('hidden', !on);
+}
+function showError(msg){
+  const el = document.getElementById('error-banner');
+  if(msg){ el.textContent = msg; el.classList.add('show'); }
+  else { el.classList.remove('show'); }
+}
+
+// =====================================================================
+// PAGE NAV
+// =====================================================================
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id==='outlet') renderComparison();
+  if(id==='events') renderEvent();
+  if(id==='evidence') filterEvidence();
+}
+
+// =====================================================================
+// OVERVIEW
+// =====================================================================
+function renderOverview(){
+  const cov = DATA.coverage || [];
+  const events = DATA.event_matrix || [];
+  const passages = DATA.passages || [];
+  const triples = DATA.triples || [];
+
+  const sharedEvents = events.filter(r=>{
+    const vals = Object.values(r).slice(1);
+    return vals.filter(v=>v>0).length >= 2;
+  });
+
+  document.getElementById('overview-sub').textContent =
+    `How much of ${sharedEvents.length} major shared political events did each outlet cover? Based on ${OUTLETS.length} monitored outlets.`;
+
+  document.getElementById('stat-cards').innerHTML = [
+    ['Total Events Tracked', events.length, 'across all outlets'],
+    ['Shared Events', sharedEvents.length, 'covered by 2+ outlets'],
+    ['Outlets Monitored', OUTLETS.length, 'major Indian news sources'],
+    ['Passages Analyzed', passages.length.toLocaleString(), 'with entity & framing scores'],
+  ].map(([t,v,s])=>`
+    <div class="card">
+      <div class="card-title">${t}</div>
+      <div class="stat-big">${v}</div>
+      <div class="stat-sub">${s}</div>
+    </div>`).join('');
+
+  const shareKey = cov[0] ? Object.keys(cov[0]).find(k=>k.includes('Coverage_Share')||k.includes('coverage_share')) : null;
+  const missKey  = cov[0] ? Object.keys(cov[0]).find(k=>k.includes('Missed')||k.includes('missed')) : null;
+  const delayKey = cov[0] ? Object.keys(cov[0]).find(k=>k.includes('Delay')||k.includes('delay')) : null;
+  const exclKey  = cov[0] ? Object.keys(cov[0]).find(k=>k.includes('Exclusive_Rate')||k.includes('exclusive_rate')) : null;
+  const outletKey= cov[0] ? Object.keys(cov[0]).find(k=>k.toLowerCase()==='outlet'||k.toLowerCase()==='outlet') : 'Outlet';
+
+  function bars(sorted, key, color, suffix='', maxOverride=null){
+    const max = maxOverride || Math.max(...sorted.map(r=>parseFloat(r[key]||0)||0)) || 1;
+    return sorted.map(r=>{
+      const v = parseFloat(r[key]||0)||0;
+      return `<div class="bar-row">
+        <div class="bar-label" title="${label(r[outletKey])}">${label(r[outletKey])}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${v/max*100}%;background:${color}"></div></div>
+        <div class="bar-val">${v}${suffix}</div>
+      </div>`;
+    }).join('');
+  }
+
+  if(shareKey){
+    const s=[...cov].sort((a,b)=>(b[shareKey]||0)-(a[shareKey]||0));
+    document.getElementById('coverage-bars').innerHTML=bars(s,shareKey,'var(--accent2)','%');
+  }
+  if(missKey){
+    const s=[...cov].sort((a,b)=>(b[missKey]||0)-(a[missKey]||0));
+    document.getElementById('miss-bars').innerHTML=bars(s,missKey,'var(--neg)');
+  }
+  if(delayKey){
+    const s=[...cov].sort((a,b)=>(a[delayKey]||0)-(b[delayKey]||0));
+    document.getElementById('delay-bars').innerHTML=bars(s,delayKey,'var(--warn)','h');
+  }
+  if(exclKey){
+    document.getElementById('excl-bars').innerHTML=cov.map(r=>{
+      const ep=parseFloat(r[exclKey]||0)||0;
+      return `<div class="sbar-row">
+        <div class="sbar-label">${label(r[outletKey])}</div>
+        <div class="sbar-track">
+          <div style="width:${ep}%;background:#6366f1;opacity:.7"></div>
+          <div style="width:${100-ep}%;background:var(--accent2);opacity:.6"></div>
+        </div>
+        <div class="sbar-count">${ep}%</div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// =====================================================================
+// OUTLET COMPARISON
+// =====================================================================
+function initOutletSelects(){
+  ['outletA','outletB'].forEach((id,i)=>{
+    const sel=document.getElementById(id);
+    sel.innerHTML='';
+    OUTLETS.forEach((o,j)=>{
+      const opt=document.createElement('option');
+      opt.value=o; opt.textContent=label(o);
+      if(j===(i===0?2:3)) opt.selected=true;
+      sel.appendChild(opt);
+    });
+  });
+}
+
+function renderComparison(){
+  const cov = DATA.coverage||[];
+  const a=document.getElementById('outletA').value;
+  const b=document.getElementById('outletB').value;
+  const outletKey = cov[0] ? Object.keys(cov[0]).find(k=>k.toLowerCase()==='outlet') : 'Outlet';
+
+  [a,b].forEach((outlet,i)=>{
+    const d = cov.find(r=>r[outletKey]===outlet)||{};
+    const keys = Object.keys(d).filter(k=>k!==outletKey);
+    document.getElementById('compare-cards').children[i]?.remove();
+  });
+
+  const da = cov.find(r=>r[Object.keys(r)[0]]===a)||{};
+  const db = cov.find(r=>r[Object.keys(r)[0]]===b)||{};
+
+  const prettyKey = k => k.replace(/_/g,' ').replace('%','').trim();
+
+  document.getElementById('compare-cards').innerHTML=[da,db].map(d=>`
+    <div class="compare-card">
+      <div class="compare-outlet-name">${label(Object.values(d)[0]||'')}</div>
+      ${Object.entries(d).slice(1).map(([k,v])=>`
+        <div class="metric-row">
+          <span class="metric-label">${prettyKey(k)}</span>
+          <span class="metric-val">${v??'—'}${k.includes('%')?'%':''}</span>
+        </div>`).join('')}
+    </div>`).join('');
+
+  // Heatmap
+  const overlap = DATA.overlap||[];
+  if(!overlap.length) return;
+  const cols = Object.keys(overlap[0]).slice(1);
+  const rowKey = Object.keys(overlap[0])[0];
+  let html=`<table><tr><th></th>${cols.map(o=>`<th title="${label(o)}">${label(o)}</th>`).join('')}</tr>`;
+  overlap.forEach(row=>{
+    const self = row[row[rowKey]]||row[cols[0]]||1;
+    html+=`<tr><td class="row-label heatmap">${label(row[rowKey])}</td>`;
+    cols.forEach(o=>{
+      const v=row[o]||0;
+      const pct=Math.min(v/Math.max(self,1),1);
+      const bg=v===0?'var(--bg3)':`rgba(94,196,89,${0.1+pct*0.85})`;
+      const sel=(row[rowKey]===a||row[rowKey]===b)&&(o===a||o===b);
+      html+=`<td style="background:${bg};${sel?'outline:2px solid var(--accent);outline-offset:-2px':''}" title="${label(row[rowKey])} × ${label(o)}: ${v}">${v||''}</td>`;
+    });
+    html+='</tr>';
+  });
+  html+='</table>';
+  document.getElementById('overlap-heatmap').innerHTML=html;
+}
+
+// =====================================================================
+// TARGET PORTRAYAL
+// =====================================================================
+function initTargets(){
+  const bias = DATA.bias||[];
+  const targetCounts = {};
+  bias.forEach(r=>{ const t=r.canonical_target||r.canonicaltarget; if(t) targetCounts[t]=(targetCounts[t]||0)+(r.passage_mentions||1); });
+  const topTargets = Object.entries(targetCounts).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([t])=>t);
+  if(!activeTarget && topTargets.length) activeTarget=topTargets[0];
+
+  document.getElementById('target-pills').innerHTML=topTargets.map(t=>`
+    <button class="target-pill${t===activeTarget?' active':''}" onclick="selectTarget('${t.replace(/'/g,'\\\'')}')">${t}</button>`).join('');
+  renderTarget();
+
+  // Also populate evidence target filter
+  const tSel=document.getElementById('ev-target-filter');
+  tSel.innerHTML='<option value="">All targets</option>';
+  topTargets.forEach(t=>{const opt=document.createElement('option');opt.value=t;opt.textContent=t;tSel.appendChild(opt);});
+}
+
+function selectTarget(t){
+  activeTarget=t;
+  document.querySelectorAll('.target-pill').forEach(p=>p.classList.toggle('active',p.textContent===t));
+  renderTarget();
+}
+
+function renderTarget(){
+  const bias = DATA.bias || [];
+  const triples = DATA.triples || [];
+  
+  if(!bias.length) return;
+
+  const outletKey = Object.keys(bias[0]).find(k=>k.includes('outlet')) || 'clean_outlet';
+  const targetKey = Object.keys(bias[0]).find(k=>k.includes('target')) || 'canonical_target';
+  const negK = Object.keys(bias[0]).find(k=>k.includes('Negative')||k.includes('negative'))||'%_Negative';
+  const posK = Object.keys(bias[0]).find(k=>k.includes('Positive')||k.includes('positive'))||'%_Positive';
+  const neuK = Object.keys(bias[0]).find(k=>k.includes('Neutral')||k.includes('neutral'))||'%_Neutral';
+  const menK = Object.keys(bias[0]).find(k=>k.includes('mention')||k.includes('passage'))||'passage_mentions';
+  const framK= Object.keys(bias[0]).find(k=>k.includes('framing'))||'dominant_framing';
+
+  // 1. Get all rows for the selected target
+  const rows = bias.filter(r => (r[targetKey] || '') === activeTarget);
+  
+  document.getElementById('target-label-sent').textContent = activeTarget;
+  document.getElementById('target-label-frame').textContent = activeTarget;
+
+  if(!rows.length){
+    ['sentiment-bars','framing-list','target-evidence'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.innerHTML = `<div class="empty-state">No data for ${activeTarget}</div>`;
+    });
+    return;
+  }
+
+  // 2. Aggregate the data by Outlet (Calculate Weighted Averages)
+  const aggregated = {};
+  
+  rows.forEach(r => {
+    const outlet = r[outletKey];
+    const mentions = parseFloat(r[menK]) || 0;
+    const neg = parseFloat(r[negK]) || 0;
+    const pos = parseFloat(r[posK]) || 0;
+    const neu = parseFloat(r[neuK]) || 0;
+    const frame = r[framK] || 'None';
+    
+    if (!aggregated[outlet]) {
+      aggregated[outlet] = { mentions: 0, negWeight: 0, posWeight: 0, neuWeight: 0, frames: {} };
+    }
+    
+    // Multiply percentage by mentions so bigger events carry more weight
+    aggregated[outlet].mentions += mentions;
+    aggregated[outlet].negWeight += (neg * mentions);
+    aggregated[outlet].posWeight += (pos * mentions);
+    aggregated[outlet].neuWeight += (neu * mentions);
+    
+    // Count the framing frequency
+    if (frame !== 'None') {
+      aggregated[outlet].frames[frame] = (aggregated[outlet].frames[frame] || 0) + 1;
+    }
+  });
+
+  // 3. Convert back to an array for rendering
+  const finalRows = Object.keys(aggregated).map(outlet => {
+    const data = aggregated[outlet];
+    const totalM = data.mentions || 1; // prevent divide by zero
+    
+    // Find the most frequent framing for this outlet overall
+    let domFrame = "None";
+    let maxF = 0;
+    Object.keys(data.frames).forEach(f => {
+      if (data.frames[f] > maxF) { maxF = data.frames[f]; domFrame = f; }
+    });
+
+    return {
+      outlet: outlet,
+      mentions: data.mentions,
+      neg: (data.negWeight / totalM).toFixed(1),
+      pos: (data.posWeight / totalM).toFixed(1),
+      neu: (data.neuWeight / totalM).toFixed(1),
+      frame: domFrame
+    };
+  }).sort((a, b) => b.mentions - a.mentions); // Sort by total mentions
+
+  // 4. Render the unified Sentiment Bars
+  document.getElementById('sentiment-bars').innerHTML = finalRows.map(r => `
+    <div class="sbar-row">
+      <div class="sbar-label" title="${label(r.outlet)}">${label(r.outlet)}</div>
+      <div class="sbar-track">
+        <div class="sbar-neg" style="width:${r.neg}%" title="Negative: ${r.neg}%"></div>
+        <div class="sbar-pos" style="width:${r.pos}%" title="Positive: ${r.pos}%"></div>
+        <div class="sbar-neu" style="width:${r.neu}%" title="Neutral: ${r.neu}%"></div>
+      </div>
+      <div class="sbar-count">${r.mentions}</div>
+    </div>
+  `).join('');
+
+  // 5. Render the unified Framing List
+  const frameList = document.getElementById('framing-list');
+  if(frameList) {
+    frameList.innerHTML = finalRows.map(r => `
+      <div class="metric-row">
+        <span class="metric-label">${label(r.outlet)}</span>
+        <span><span class="framing-tag">${r.frame}</span></span>
+      </div>
+    `).join('');
+  }
+  
+  // 6. Render Evidence Triples (No change needed here)
+  const ev = triples.filter(t => (t.canonical_target || t.canonicaltarget || '') === activeTarget && (t.evidence_span || '').length > 5);
+  document.getElementById('target-evidence').innerHTML = ev.length
+    ? ev.map(t => evCard(t)).join('')
+    : `<div class="empty-state">No evidence passages for ${activeTarget}</div>`;
+}
+// =====================================================================
+// EVENT DEEP DIVE
+// =====================================================================
+function initEventSelect(){
+  const bias = DATA.bias||[];
+  const evKey = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('event')) : 'event_id';
+  const events = [...new Set(bias.map(r=>r[evKey]))].filter(Boolean).sort();
+  const sel = document.getElementById('event-select');
+  sel.innerHTML='';
+  events.forEach(e=>{const opt=document.createElement('option');opt.value=e;opt.textContent=e;sel.appendChild(opt);});
+  renderEvent();
+}
+
+function renderEvent(){
+  const evId = document.getElementById('event-select').value;
+  if(!evId) return;
+  const bias = DATA.bias||[];
+  const omission = DATA.omission||[];
+  const triples = DATA.triples||[];
+
+  const evKey    = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('event')) : 'event_id';
+  const outKey   = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('outlet')) : 'clean_outlet';
+  const targetKey= bias[0] ? Object.keys(bias[0]).find(k=>k.includes('target')) : 'canonical_target';
+  const negK     = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('Negative')||k.includes('negative')) : '%_Negative';
+  const posK     = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('Positive')||k.includes('positive')) : '%_Positive';
+  const neuK     = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('Neutral')||k.includes('neutral'))   : '%_Neutral';
+  const menK     = bias[0] ? Object.keys(bias[0]).find(k=>k.includes('mention')||k.includes('passage'))   : 'passage_mentions';
+
+  const rows = bias.filter(r=>r[evKey]===evId);
+  const coveredOutlets = [...new Set(rows.map(r=>r[outKey]))];
+  const missedOutlets = OUTLETS.filter(o=>!coveredOutlets.includes(o));
+
+  document.getElementById('event-outlet-count').textContent =
+    `${coveredOutlets.length} outlet${coveredOutlets.length!==1?'s':''} covered · ${missedOutlets.length} missed`;
+
+  document.getElementById('event-outlets').innerHTML =
+    coveredOutlets.map(o=>`<div class="metric-row"><span class="metric-label">${label(o)}</span><span class="metric-val" style="color:var(--accent2)">✓ covered</span></div>`).join('') +
+    missedOutlets.map(o=>`<div class="metric-row"><span class="metric-label" style="color:var(--text3)">${label(o)}</span><span class="metric-val" style="color:var(--neg)">— missed</span></div>`).join('');
+
+  document.getElementById('event-targets').innerHTML=rows.map(r=>`
+    <div class="sbar-row">
+      <div class="sbar-label" style="font-size:11px" title="${r[targetKey]} · ${label(r[outKey])}">${(r[targetKey]||'').substring(0,14)} <span style="color:var(--text3)">· ${label(r[outKey]).substring(0,10)}</span></div>
+      <div class="sbar-track">
+        <div class="sbar-neg" style="width:${r[negK]||0}%"></div>
+        <div class="sbar-pos" style="width:${r[posK]||0}%"></div>
+        <div class="sbar-neu" style="width:${r[neuK]||0}%"></div>
+      </div>
+      <div class="sbar-count">${r[menK]||''}</div>
+    </div>`).join('');
+
+  // Omission heatmap
+  const omKey   = omission[0] ? Object.keys(omission[0]).find(k=>k.includes('event')) : 'event_id';
+  const omTarK  = omission[0] ? Object.keys(omission[0]).find(k=>k.includes('target')) : 'canonical_target';
+  const omRows  = omission.filter(r=>r[omKey]===evId);
+
+  if(omRows.length){
+    const omCols  = Object.keys(omRows[0]).filter(k=>k!==omKey && k!==omTarK);
+    let html=`<table><tr><th>Target</th>${omCols.map(o=>`<th title="${label(o)}">${label(o)}</th>`).join('')}</tr>`;
+    const omTargets=[...new Set(omRows.map(r=>r[omTarK]))];
+    omTargets.forEach(tgt=>{
+      const row=omRows.find(r=>r[omTarK]===tgt)||{};
+      const maxV=Math.max(...omCols.map(o=>parseFloat(row[o]||0)||0),1);
+      html+=`<tr><td class="row-label heatmap" style="width:150px">${tgt}</td>`;
+      omCols.forEach(o=>{
+        const v=parseFloat(row[o]||0)||0;
+        const bg=v===0?'var(--bg3)':`rgba(94,196,89,${0.15+Math.min(v/maxV,1)*0.8})`;
+        html+=`<td style="background:${bg}" title="${tgt} in ${label(o)}: ${v}">${v||''}</td>`;
+      });
+      html+='</tr>';
+    });
+    html+='</table>';
+    document.getElementById('event-omission').innerHTML=html;
+  } else {
+    document.getElementById('event-omission').innerHTML=`<div class="empty-state">No omission data for this event in the file</div>`;
+  }
+
+  const evTrip = triples.filter(t=>(t.event_id||t.eventid||'')===evId && (t.evidence_span||'').length>5);
+  document.getElementById('event-evidence').innerHTML = evTrip.length
+    ? evTrip.map(t=>evCard(t)).join('')
+    : `<div class="empty-state">No evidence passages recorded for ${evId}</div>`;
+}
+
+// =====================================================================
+// EVIDENCE EXPLORER
+// =====================================================================
+function initEvidenceFilters(){
+  const triples = DATA.triples||[];
+  const outKey    = triples[0] ? Object.keys(triples[0]).find(k=>k.includes('outlet'))  : 'clean_outlet';
+  const framKey   = triples[0] ? Object.keys(triples[0]).find(k=>k.includes('framing')) : 'framing_label';
+  const targetKey = triples[0] ? Object.keys(triples[0]).find(k=>k.includes('target'))  : 'canonical_target';
+
+  const oSel=document.getElementById('ev-outlet-filter');
+  oSel.innerHTML='<option value="">All outlets</option>';
+  [...new Set(triples.map(t=>t[outKey]).filter(Boolean))].sort().forEach(o=>{
+    const opt=document.createElement('option');opt.value=o;opt.textContent=label(o);oSel.appendChild(opt);
+  });
+
+  const fSel=document.getElementById('ev-framing-filter');
+  fSel.innerHTML='<option value="">All framings</option>';
+  [...new Set(triples.map(t=>t[framKey]).filter(Boolean))].sort().forEach(f=>{
+    const opt=document.createElement('option');opt.value=f;opt.textContent=f;fSel.appendChild(opt);
+  });
+
+  filterEvidence();
+}
+
+function filterEvidence(){
+  const triples = DATA.triples||[];
+  if(!triples.length) return;
+
+  const outKey    = Object.keys(triples[0]).find(k=>k.includes('outlet'))  ||'clean_outlet';
+  const sentKey   = Object.keys(triples[0]).find(k=>k.includes('sentiment'))||'sentiment';
+  const framKey   = Object.keys(triples[0]).find(k=>k.includes('framing')) ||'framing_label';
+  const targetKey = Object.keys(triples[0]).find(k=>k.includes('target'))  ||'canonical_target';
+  const spanKey   = Object.keys(triples[0]).find(k=>k.includes('evidence_span')||k.includes('evidencespan'))||'evidence_span';
+
+  const outlet  = document.getElementById('ev-outlet-filter').value;
+  const sent    = document.getElementById('ev-sentiment-filter').value;
+  const frame   = document.getElementById('ev-framing-filter').value;
+  const target  = document.getElementById('ev-target-filter').value;
+
+  const filtered = triples.filter(t=>
+    (!outlet  || t[outKey]===outlet) &&
+    (!sent    || (t[sentKey]||'').includes(sent)) &&
+    (!frame   || t[framKey]===frame) &&
+    (!target  || t[targetKey]===target) &&
+    (t[spanKey]||'').length > 5
+  );
+
+  document.getElementById('ev-count').textContent = `${filtered.length} passages`;
+  document.getElementById('all-evidence').innerHTML = filtered.length
+    ? filtered.map(t=>evCard(t)).join('')
+    : `<div class="empty-state">No passages match the selected filters.</div>`;
+}
+
+// =====================================================================
+// SHARED: EVIDENCE CARD
+// =====================================================================
+function evCard(t){
+  const outKey    = Object.keys(t).find(k=>k.includes('outlet'))  ||'clean_outlet';
+  const evKey     = Object.keys(t).find(k=>k.includes('event'))   ||'event_id';
+  const targetKey = Object.keys(t).find(k=>k.includes('target'))  ||'canonical_target';
+  const sentKey   = Object.keys(t).find(k=>k.includes('sentiment'))||'sentiment';
+  const framKey   = Object.keys(t).find(k=>k.includes('framing')) ||'framing_label';
+  const spanKey   = Object.keys(t).find(k=>k.includes('evidence_span')||k.includes('evidencespan'))||'evidence_span';
+
+  const sent = t[sentKey]||'';
+  const sc = sent.includes('Neg')||sent==='Negative' ? 'neg' : sent.includes('Pos')||sent==='Positive' ? 'pos' : 'neu';
+  const triple = t.subject&&t.relation&&t.object
+    ? `<div class="ev-triple">${t.subject} → ${t.relation} → ${t.object}</div>` : '';
+
+  return `<div class="ev-card">
+    <div class="ev-header">
+      <span class="ev-outlet">${label(t[outKey]||'')}</span>
+      <span class="ev-event">${t[evKey]||''}</span>
+      <span class="ev-target">${t[targetKey]||''}</span>
+      <span class="ev-sentiment ${sc}">${sent}</span>
+      ${t[framKey]?`<span class="framing-tag">${t[framKey]}</span>`:''}
+    </div>
+    <div class="ev-text">"${t[spanKey]||''}"</div>
+    ${triple}
+  </div>`;
+}
+
+// =====================================================================
+// BOOT
+// =====================================================================
+loadAllData();
+</script>
+</body>
+</html>

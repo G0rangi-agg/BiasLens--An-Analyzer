@@ -1,0 +1,132 @@
+{
+  "indian_express": {
+    "outlet_name": "Indian Express",
+    "rss_feeds": ["https://indianexpress.com/section/political-pulse/feed/"],
+    "sitemaps": [],
+    "section_pages": ["https://indianexpress.com/section/political-pulse/"],
+    "url_pattern": "/article/political-pulse/"
+  },
+  "the_hindu": {
+    "outlet_name": "The Hindu",
+    "rss_feeds": ["https://www.thehindu.com/news/national/feeder/default.rss"],
+    "sitemaps": [],
+    "section_pages": [],
+    "url_pattern": "/news/national/"
+  },
+
+  "hindustan_times": {
+    "outlet_name": "Hindustan Times",
+    "rss_feeds": [
+      "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml",
+      "https://www.hindustantimes.com/feeds/rss/elections/rssfeed.xml",
+      "https://www.hindustantimes.com/feeds/rss/analysis/rssfeed.xml",
+      "https://www.hindustantimes.com/feeds/rss/opinion/rssfeed.xml"
+    ],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.hindustantimes.com/india-news",
+      "https://www.hindustantimes.com/elections"
+    ],
+    "url_pattern": "/india-news/"
+  },
+
+  "ndtv": {
+    "outlet_name": "NDTV",
+    "rss_feeds": [
+      "https://feeds.feedburner.com/ndtvnews-india-news"
+    ],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.ndtv.com/india"
+    ],
+    "url_pattern": "/india-news/"
+  },
+
+  "india_today": {
+    "outlet_name": "India Today",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.indiatoday.in/india",
+      "https://www.indiatoday.in/elections"
+    ],
+    "url_pattern": "/india/"
+  },
+
+  "news18": {
+    "outlet_name": "News18",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.news18.com/politics/",
+      "https://www.news18.com/india/"
+    ],
+    "url_pattern": "/politics/"
+  },
+
+  "the_print": {
+    "outlet_name": "ThePrint",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://theprint.in/politics/",
+      "https://theprint.in/india/"
+    ],
+    "url_pattern": "/politics/"
+  },
+
+  "firstpost": {
+    "outlet_name": "Firstpost",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.firstpost.com/india",
+      "https://www.firstpost.com/tag/politics"
+    ],
+    "url_pattern": "/india/"
+  },
+
+  "deccan_herald": {
+    "outlet_name": "Deccan Herald",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.deccanherald.com/india",
+      "https://www.deccanherald.com/tag/politics"
+    ],
+    "url_pattern": "/india/"
+  },
+
+  "the_new_indian_express": {
+    "outlet_name": "The New Indian Express",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.newindianexpress.com/nation",
+      "https://www.newindianexpress.com/topic/politics"
+    ],
+    "url_pattern": "/nation/"
+  },
+
+  "telegraph_india": {
+    "outlet_name": "The Telegraph",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://www.telegraphindia.com/india",
+      "https://www.telegraphindia.com/topic/politics"
+    ],
+    "url_pattern": "/india/"
+  },
+
+  "times_of_india": {
+    "outlet_name": "The Times of India",
+    "rss_feeds": [],
+    "sitemaps": [],
+    "section_pages": [
+      "https://timesofindia.indiatimes.com/india",
+      "https://timesofindia.indiatimes.com/elections"
+    ],
+    "url_pattern": "/india/"
+  }
+}

@@ -1,0 +1,67 @@
+passage_id,article_id,event_id,clean_outlet,framing_label,canonical_target,sentiment,confidence,evidence_span
+fffa3fa866d842d8_p001,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,BJP (Bharatiya Janata Party),Positive,0.9,Assam Elections 2026: Full List Of BJP Candidates And Their Constituencies For Assembly Polls
+fffa3fa866d842d8_p002,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,BJP,Neutral,1.0,released its first list of candidates for the 2026 assembly elections.
+fffa3fa866d842d8_p003,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Bharatiya Janata Party (BJP),Positive,1.0,The Bharatiya Janata Party (BJP) in Assam has released the first list of candidates for the upcoming 2026 assembly elections.
+fffa3fa866d842d8_p004,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Chief Minister Himanta Biswa Sarma,Neutral,0.9,"Chief Minister Himanta Biswa Sarma, a key figure of the party in Assam, will contest from the Jalukbari assembly constituency."
+fffa3fa866d842d8_p005,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Assam Elections,Neutral,1.0,Assam Elections 2026: Full List Of Congress Candidates And Their Constituencies For Assembly Polls
+fffa3fa866d842d8_p006,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,BJP (Bharatiya Janata Party),Positive,0.9,"""BJP Names RG Kar Victim’s Mother As Candidate In Third List For Bengal Elections"""
+fffa3fa866d842d8_p007,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Nandita Garlosa,Positive,0.9,Joins Congress ahead Of Assam polls
+fffa3fa866d842d8_p008,fffa3fa866d842d8,EVT_00007,news18,Development,IIT JAM,Neutral,1.0,IIT JAM 2026 Results Declared: What's Next? Know The Counselling Process
+fffa3fa866d842d8_p009,fffa3fa866d842d8,EVT_00007,news18,Development,Sarma,Positive,0.9,"Jalukbari is considered Sarma’s stronghold, as the Assam Chief Minister has secured victory on the seat in all the previous assembly elections held in 2001, 2006, 2011, 2016, and 2021."
+fffa3fa866d842d8_p010,fffa3fa866d842d8,EVT_00007,news18,Turncoats and Political Loyalty,Pradyut Bordoloi,Negative,0.9,"Pradyut Bordoloi, the Congress turncoat"
+fffa3fa866d842d8_p011,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Election Commission of India,Positive,0.9,The vote counting will be held on May 4.
+fffa3fa866d842d8_p012,fffa3fa866d842d8,EVT_00007,news18,Protest,Ashwini Ray Sarkar,Negative,0.9,Golakganj – Ashwini Ray Sarkar
+fffa3fa866d842d8_p013,fffa3fa866d842d8,EVT_00007,news18,Development,Pabitra Rabha,Neutral,0.8,Goalpara West (ST) – Pabitra Rabha
+fffa3fa866d842d8_p014,fffa3fa866d842d8,EVT_00007,news18,Development,Tankeshwar Rabha,Neutral,0.8,Dudhnai (ST) – Tankeshwar Rabha
+fffa3fa866d842d8_p015,fffa3fa866d842d8,EVT_00007,news18,Election Strategy,Arup Kumar Dey,Negative,0.85,Bijni – Arup Kumar Dey
+fffa3fa866d842d8_p016,fffa3fa866d842d8,EVT_00007,news18,Violence,Ranjeet Kumar Dass,Negative,0.85,Bhowanipur-Sorbhog – Ranjeet Kumar Dass
+fffa3fa866d842d8_p017,fffa3fa866d842d8,EVT_00007,news18,Development,Badal Chandra Arjya,Neutral,0.9,Mandia – Badal Chandra Arjya
+fffa3fa866d842d8_p018,fffa3fa866d842d8,EVT_00007,news18,Violence,Raju Mech,Negative,0.9,(Boko-Chayon (ST) – Raju Mech)
+fffa3fa866d842d8_p019,fffa3fa866d842d8,EVT_00007,news18,Protest,Himanshu Shekhar Baishya,Negative,0.9,Palasbari – Himanshu Shekhar Baishya
+fffa3fa866d842d8_p020,fffa3fa866d842d8,EVT_00007,news18,Violence,Diplu Ranjan Sarmah,Negative,0.9,New Guwahati – Diplu Ranjan Sarmah
+fffa3fa866d842d8_p021,fffa3fa866d842d8,EVT_00007,news18,Violence,Vijay Kumar Gupta,Negative,0.8,Guwahati Central – Vijay Kumar Gupta
+fffa3fa866d842d8_p022,fffa3fa866d842d8,EVT_00007,news18,Policy,Himanta Biswa Sarma,Neutral,0.8,Jalukbari – Himanta Biswa Sarma
+5a27006c568b3c76_p001,5a27006c568b3c76,EVT_00007,news18,Development,Rajya Sabha MPs,Neutral,0.9,Top 10 Richest Rajya Sabha MPs And Their Assets
+5a27006c568b3c76_p002,5a27006c568b3c76,EVT_00007,news18,Corruption,Rajya Sabha MPs,Neutral,0.8,"Here’s a look at top 10 richest Rajya Sabha MPs with highest declared assets, based on affidavits"
+5a27006c568b3c76_p003,5a27006c568b3c76,EVT_00007,news18,Corruption,Bandi Saradhi,Negative,0.9,"Bandi Saradhi: Telangana MP Sri Dr Bandi Partha Saradhi (BRS) tops the list with total assets of Rs 5300+ crore, driven largely by Rs 5215+ crore in movable holdings."
+5a27006c568b3c76_p004,5a27006c568b3c76,EVT_00007,news18,Corruption,AAP (Aam Aadmi Party),Negative,0.9,"Rajinder Gupta: AAP’s Rajinder Gupta ranks second with Rs 5053+ crore, combining Rs 4437+ crore movable assets and Rs 615+ crore in immovable properties."
+5a27006c568b3c76_p005,5a27006c568b3c76,EVT_00007,news18,Corruption,A.A.R Reddy,Negative,0.9,"Rs 2577+ crore total assets, with Rs 2518+ crore movable and Rs 59 + crore immovable wealth."
+5a27006c568b3c76_p006,5a27006c568b3c76,EVT_00007,news18,Corruption,Abhishek Manu Singhvi (INC),Negative,0.9,"Abhishek Manu Singhvi (INC), Telangana, holds Rs 2558+ crore, including Rs 2104+ crore movable assets and Rs 453+ crore in immovable property."
+5a27006c568b3c76_p007,5a27006c568b3c76,EVT_00007,news18,Law & Order,Jaya Bachchan,Neutral,0.8,"Rs 1578+ crore, with a near-even split between Rs 849 + crore movable and Rs 729 + crore immovable assets."
+5a27006c568b3c76_p008,5a27006c568b3c76,EVT_00007,news18,Corruption,Kapil Sibal,Negative,0.9,(Image: Instagram)
+5a27006c568b3c76_p009,5a27006c568b3c76,EVT_00007,news18,Corruption,Santrupt Mishra,Negative,0.9,"Santrupt Mishra (BJD), Odisha, reported Rs 595 + crore in assets, largely from Rs 533+ crore movable wealth and Rs 61+ crore immovable assets."
+5a27006c568b3c76_p010,5a27006c568b3c76,EVT_00007,news18,Corruption,AAP's leader,Negative,0.9,"Rs 498 + crore total assets, with Rs 466+ crore movable and Rs 31+ crore in immovable property."
+5a27006c568b3c76_p011,5a27006c568b3c76,EVT_00007,news18,Corruption,M.R. Reddy,Negative,0.9,"(Rs 475+ crore, with a higher share in Rs 372+ crore immovale assets than Rs 102+ crore movable)"
+5a27006c568b3c76_p012,5a27006c568b3c76,EVT_00007,news18,Politics and Voting,Elections,Neutral,0.9,"Check Kerala Elections, Assam Elections, Puducherry Elections Live Coverage."
+5a27006c568b3c76_p012,5a27006c568b3c76,EVT_00007,news18,Elections Monitoring and Information,Voter Turnout,Neutral,0.9,"Kerala Voter Turnout, Assam Voter Turnout, Puducherry Voter Turnout Realtime Updates."
+9e6e12ffe0d2a6e8_p001,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Lok Sabha expansion proposals,Neutral,0.8,"As govt considers expanding Lok Sabha to 816 MPs, how states' seat count will change"
+9e6e12ffe0d2a6e8_p002,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Election Strategy,"UP (Uttar Pradesh), Maharashtra, West Bengal",Neutral,0.9,"At current ratios, UP will get 120 MPs, Maharashtra 72, and West Bengal 63."
+9e6e12ffe0d2a6e8_p003,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Centre,Neutral,0.8,"delinking the Women’s Reservation Act, 2023 — which seeks to reserve one-third of seats in the Lok Sabha and state Assemblies for women — from the impending Census and delimitation exercises"
+9e6e12ffe0d2a6e8_p003,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Centre,Neutral,0.8,"and suggested that the strength of the Lok Sabha be raised from the current 543 to 816, including 273 seats reserved for women."
+9e6e12ffe0d2a6e8_p004,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Union Home Minister Amit Shah,Neutral,0.9,suggesting amending the Act and separately raising the total strength of the Lok Sabha while maintaining the current proportions of seats allotted to each state.
+9e6e12ffe0d2a6e8_p004,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Union Home Minister Amit Shah,Neutral,0.9,suggesting amending the Act and separately raising the total strength of the Lok Sabha while maintaining the current proportions of seats allotted to each state.
+9e6e12ffe0d2a6e8_p005,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Development,Uttar Pradesh (UP),Neutral,0.9,"Going by the current state-wise allocation of seats, Uttar Pradesh by far has the highest proportion of Lok Sabha seats: 15% or 80 of the total 543."
+9e6e12ffe0d2a6e8_p006,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Development,Indian political system,Positive,0.9,"Maharashtra will go from 48 seats to 72, including 24 reserved for women, Bengal will go from 42 to 63 seats, with 21 for women, and Bihar will go from 40 to 60 seats, including 20 reserved for women."
+9e6e12ffe0d2a6e8_p006,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Development,Indian political system,Positive,0.9,"In Tamil Nadu, where the DMK has led the charge against the state’s alleged underrepresentation in Parliament, the number of Lok Sabha seats will rise from 39 to 59, with 20 seats reserved for women."
+9e6e12ffe0d2a6e8_p006,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Development,Indian political system,Positive,0.9,"Madhya Pradesh, meanwhile, will rise from 29 seats to 44 with 15 seats for women."
+9e6e12ffe0d2a6e8_p007,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Lok Sabha (Indian legislative body),Neutral,0.9,"Among the smaller states, Arunachal Pradesh, Goa, Manipur, Meghalaya, Tripura could go from 2 Lok Sabha seats to 3 each."
+9e6e12ffe0d2a6e8_p007,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Lok Sabha (Indian legislative body),Neutral,0.9,"Mizoram, Nagaland and Sikkim, which each have 1 seat, could have 2 seats each in the new Lok Sabha configuration."
+9e6e12ffe0d2a6e8_p008,9e6e12ffe0d2a6e8,EVT_00007,indian_express,Policy,Political Reforms,Neutral,0.8,"While it remains unclear if the single-seat UTs, including Ladakh and Puducherry among others, will see an increase in the number of seats and how they may be reserved for women."
+7832c3156564da3f_p001,7832c3156564da3f,EVT_00007,news18,Election Strategy,AIADMK,Neutral,1.0,Tamil Nadu Elections 2026: Full List Of AIADMK Candidates And Their Constituencies For Assembly Polls
+7832c3156564da3f_p002,7832c3156564da3f,EVT_00007,news18,Election Strategy,Edappadi K Palaniswami (AIADMK),Neutral,0.9,AIADMK led by Edappadi K Palaniswami names 23 candidates for Tamil Nadu polls.
+7832c3156564da3f_p003,7832c3156564da3f,EVT_00007,news18,Election Strategy,Edappadi K Palaniswami,Neutral,0.8,party chief Edappadi K Palaniswami set to contest from his home constituency of Edappadi.
+7832c3156564da3f_p004,7832c3156564da3f,EVT_00007,news18,Election Strategy,Tamil Nadu Polls,Neutral,1.0,"In Tamil Nadu, the polling will be held in a single phase on April 23 to elect 234 members to the legislative assembly, with vote counting scheduled for May 4."
+7832c3156564da3f_p005,7832c3156564da3f,EVT_00007,news18,Election Strategy,AIADMK,Positive,0.9,"Releases Second List, 150 Candidates Named So Far"
+7832c3156564da3f_p006,7832c3156564da3f,EVT_00007,news18,Election Strategy,Tamil Nadu political parties,Neutral,0.8,"2026 Tamil Nadu Elections: Which Party Got How Many Seats In DMK-Led SPA, AIADMK-Led NDA?"
+7832c3156564da3f_p007,7832c3156564da3f,EVT_00007,news18,Election Strategy,Dravidian Party,Negative,0.8,What 15 Years Of Tamil Nadu Poll Trends Tell Us About 2026 Contest
+7832c3156564da3f_p008,7832c3156564da3f,EVT_00007,news18,Election Strategy,Tamil Nadu Elections,Positive,0.9,The 20 Constituencies That Will Decide State's Next Government
+7832c3156564da3f_p009,7832c3156564da3f,EVT_00007,news18,Policy,National Democratic Alliance (NDA),Neutral,0.9,"The party, which is leading the National Democratic Alliance (NDA) in the state"
+7832c3156564da3f_p010,7832c3156564da3f,EVT_00007,news18,Policy,SP Velumani and P Thangamani,Neutral,0.9,"Key leaders, including SP Velumani and P Thangamani"
+7832c3156564da3f_p010,7832c3156564da3f,EVT_00007,news18,Location,Kumarapalayam,Neutral,0.85,"respectively, have also been fielded."
+7832c3156564da3f_p011,7832c3156564da3f,EVT_00007,news18,Protest,Edappadi K Palaniswami,Neutral,0.8,Edappadi K Palaniswami — Edappadi
+7832c3156564da3f_p012,7832c3156564da3f,EVT_00007,news18,Policy,Natham R. Viswanathan,Neutral,0.8,Natham R. Viswanathan — Natham
+7832c3156564da3f_p013,7832c3156564da3f,EVT_00007,news18,Election Strategy,Sellur K. Raju,Neutral,0.9,Sellur K. Raju — Madurai West
+7832c3156564da3f_p014,7832c3156564da3f,EVT_00007,news18,Development,Kadambur C. Raju,Neutral,0.85,Kovilpatti
+7832c3156564da3f_p015,7832c3156564da3f,EVT_00007,news18,Corruption,K.T. Rajenthra Bhalaji,Negative,0.85,"""The allegations of corruption against K.T. Rajenthra Bhalaji have been substantiated by the police investigation."
+7832c3156564da3f_p016,7832c3156564da3f,EVT_00007,news18,Corruption,Agri S.S. Krishnamurthy,Negative,0.85,Agri S.S. Krishnamurthy — Kalasapakkam
+7832c3156564da3f_p017,7832c3156564da3f,EVT_00007,news18,Violence,V.V. Rajan Chellappaa,Negative,0.9,Tirupparankundram

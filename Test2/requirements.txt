@@ -1,0 +1,14 @@
+requests
+feedparser
+bs4
+trafilatura
+newspaper3k
+readability-lxml
+dateparser
+datetime
+pandas
+ollama
+pyarrow 
+tqdm
+scikit-learn
+spacy
